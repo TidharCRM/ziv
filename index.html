@@ -1,0 +1,1008 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>זיו אהרונוב — שף לאירועים</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="זיו אהרונוב — שף לאירועים עם 35 שנות ניסיון. ארוחות שף פרטיות, קייטרינג לאירועים וסדנאות בישול. האירוע שלכם ראוי לשף אמיתי." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Caveat:wght@400;700&family=JetBrains+Mono:wght@400;500&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Mamilla — display / headings */
+  @font-face { font-family:'Mamilla'; font-weight:300; font-display:swap;
+    src:url('fonts/Mamilla-Light.woff2') format('woff2'); }
+  @font-face { font-family:'Mamilla'; font-weight:400; font-display:swap;
+    src:url('fonts/Mamilla-Regular.woff2') format('woff2'); }
+  @font-face { font-family:'Mamilla'; font-weight:500; font-display:swap;
+    src:url('fonts/Mamilla-Medium.woff2') format('woff2'); }
+  @font-face { font-family:'Mamilla'; font-weight:600; font-display:swap;
+    src:url('fonts/Mamilla-SemiBold.woff2') format('woff2'); }
+  @font-face { font-family:'Mamilla'; font-weight:700; font-display:swap;
+    src:url('fonts/Mamilla-Bold.woff2') format('woff2'); }
+  @font-face { font-family:'Mamilla'; font-weight:800; font-display:swap;
+    src:url('fonts/Mamilla-ExtraBold.woff2') format('woff2'); }
+
+  /* Aviv — body / UI */
+  @font-face { font-family:'FupAviv'; font-weight:300; font-display:swap;
+    src:url('fonts/Aviv-Light.woff2') format('woff2'); }
+  @font-face { font-family:'FupAviv'; font-weight:400; font-display:swap;
+    src:url('fonts/Aviv-Regular.woff2') format('woff2'); }
+  @font-face { font-family:'FupAviv'; font-weight:500; font-display:swap;
+    src:url('fonts/Aviv-Medium.woff2') format('woff2'); }
+  @font-face { font-family:'FupAviv'; font-weight:600; font-display:swap;
+    src:url('fonts/Aviv-SemiBold.woff2') format('woff2'); }
+  @font-face { font-family:'FupAviv'; font-weight:700; font-display:swap;
+    src:url('fonts/Aviv-Bold.woff2') format('woff2'); }
+  @font-face { font-family:'FupAviv'; font-weight:800; font-display:swap;
+    src:url('fonts/Aviv-ExtraBold.woff2') format('woff2'); }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root{
+    --ink:#1A1612;
+    --ink-2:#2A241D;
+    --ink-3:#3B342A;
+    --ink-muted:#8A7F63;              /* muted warm brown for text on light bg */
+    --paper:#FAF4E2;
+    --paper-2:#F2EAD0;
+    --paper-3:#E9DDBA;
+    --paper-muted:#C9BFA4;             /* muted warm beige for text on dark bg */
+    --ember: oklch(0.56 0.16 38);
+    --ember-deep: oklch(0.44 0.17 32);
+    --rule: rgba(26,22,18,0.14);
+    --rule-light: rgba(250,244,226,0.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:'FupAviv','Heebo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .serif{font-family:'Mamilla','Playfair Display', Georgia, serif;font-weight:400;letter-spacing:-0.01em}
+  .italic-en{font-family:'Playfair Display', Georgia, serif;font-style:italic;font-weight:400}
+  .hand{font-family:'Caveat', cursive}
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace;letter-spacing:0.02em}
+  .tick{font-family:'JetBrains Mono', ui-monospace, monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
+  .rule{height:1px;background:var(--rule);width:100%}
+
+  .container{max-width:1320px;margin:0 auto;padding:0 40px}
+  @media (max-width:780px){.container{padding:0 20px}}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  .marquee{display:flex;gap:64px;animation:scroll 32s linear infinite;white-space:nowrap}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:500;font-size:15px;transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;cursor:pointer;border:none;font-family:inherit}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ember-deep);color:var(--paper);transform:translateY(-1px)}
+  .btn-primary-light{background:var(--paper);color:var(--ink)}
+  .btn-primary-light:hover{background:var(--ember);color:var(--paper);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+  .btn-ghost:hover{border-color:var(--ink);background:rgba(26,22,18,0.05)}
+  .btn-ghost-dark{background:transparent;color:var(--paper);border:1px solid var(--rule-light)}
+  .btn-ghost-dark:hover{border-color:var(--paper);background:rgba(250,244,226,0.06)}
+  .btn-ink{background:var(--ink);color:var(--paper)}
+  .btn-ink:hover{background:var(--ember-deep);color:var(--paper)}
+  .btn-wa{background:#25D366;color:#fff}
+  .btn-wa:hover{background:#1FB954;color:#fff;transform:translateY(-1px)}
+
+  /* Placeholder patterns */
+  .ph-stripes{background-image:repeating-linear-gradient(135deg, rgba(244,238,220,0.06) 0 10px, rgba(244,238,220,0.02) 10px 20px);background-color:var(--ink-2)}
+
+  .hero-bg{object-position:center 40%}
+  .kenburns{animation:kb 22s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.12)}}
+
+  .ornament-num{font-family:'Playfair Display';font-style:italic;font-weight:400;line-height:1}
+
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:var(--paper-2)}
+  ::-webkit-scrollbar-thumb{background:var(--ink-muted);border-radius:8px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--ember-deep)}
+
+  [dir="rtl"] .marquee{animation-direction:normal}
+
+  .hero-mask{background:linear-gradient(180deg, rgba(26,22,18,0.25) 0%, rgba(26,22,18,0.55) 55%, var(--paper) 100%)}
+
+  .tilt{transition:transform .6s cubic-bezier(.2,.8,.2,1), filter .6s ease}
+  .tilt:hover{transform:translateY(-6px) rotate(-0.4deg);filter:brightness(1.08)}
+
+  .ltr{direction:ltr;unicode-bidi:embed;display:inline-block}
+
+  .sticker{transition:transform .3s ease}
+  .sticker:hover{transform:rotate(-8deg) scale(1.05)}
+
+  .bleed{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+
+  /* Text-logo — always appears on dark surfaces (Nav over hero + Footer) */
+  .text-logo{display:inline-flex;flex-direction:column;align-items:flex-start;line-height:1;letter-spacing:0.02em;color:var(--paper)}
+  .text-logo .primary{font-family:'Mamilla','Playfair Display',Georgia,serif;font-weight:600;font-size:22px;letter-spacing:-0.01em;color:var(--paper)}
+  .text-logo .secondary{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.25em;margin-top:4px;color:var(--paper-muted);text-transform:uppercase}
+
+  /* Service card highlight */
+  .svc-glow{box-shadow:0 0 0 1px var(--ember), 0 30px 80px -40px var(--ember)}
+
+  /* Sticky mobile CTA bar (mobile only) */
+  .sticky-cta{
+    display:none;
+    position:fixed;bottom:0;left:0;right:0;z-index:40;
+    background:rgba(26,22,18,0.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-top:1px solid var(--rule-light);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    align-items:center;gap:10px;
+  }
+  .sticky-cta .label{flex:1;font-size:13px;color:var(--paper);line-height:1.25}
+  .sticky-cta .btn-wa{padding:11px 16px;font-size:13px;white-space:nowrap;gap:6px}
+
+  /* FAQ accordion — lives on light section */
+  .faq-item{border-bottom:1px solid var(--rule)}
+  .faq-trigger{width:100%;background:transparent;border:none;cursor:pointer;font-family:inherit;color:var(--ink);text-align:right;padding:26px 0;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .faq-trigger:hover{color:var(--ember-deep)}
+  .faq-trigger h4{margin:0;font-family:'Mamilla','Playfair Display',Georgia,serif;font-weight:500;font-size:22px;letter-spacing:-0.01em;line-height:1.3;flex:1}
+  .faq-icon{width:32px;height:32px;flex-shrink:0;border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s ease;color:var(--ink)}
+  .faq-trigger[aria-expanded="true"] .faq-icon{background:var(--ember-deep);border-color:var(--ember-deep);color:var(--paper);transform:rotate(45deg)}
+  .faq-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+  .faq-body-inner{padding:0 0 28px;color:var(--ink-3);font-size:16px;line-height:1.7;max-width:780px;opacity:0.85}
+
+  /* Testimonial card — on light section */
+  .testi-card{
+    background:var(--paper-2);border:1px solid var(--rule);border-radius:10px;
+    padding:32px 30px 28px;display:flex;flex-direction:column;gap:16px;
+    transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    position:relative;overflow:hidden;color:var(--ink);
+    box-shadow:0 1px 2px rgba(26,22,18,0.04);
+  }
+  .testi-card:hover{transform:translateY(-4px);border-color:var(--ember-deep);box-shadow:0 20px 50px -20px rgba(26,22,18,0.18)}
+  .testi-card::before{
+    content:'"';position:absolute;top:-40px;right:14px;font-family:'Playfair Display',Georgia,serif;
+    font-size:180px;color:var(--ember-deep);opacity:0.18;line-height:1;font-style:italic;pointer-events:none;
+  }
+  .testi-stars{color:var(--ember-deep);letter-spacing:2px;font-size:14px}
+
+  /* Credibility strip — sits on dark hero */
+  .cred-strip{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:18px 24px;background:rgba(250,244,226,0.07);
+    border:1px solid var(--rule-light);border-radius:12px;
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .cred-item{display:flex;align-items:center;gap:10px;color:var(--paper);font-size:13px;flex:1;min-width:0}
+  .cred-item .ic{width:28px;height:28px;flex-shrink:0;border-radius:50%;background:var(--ember);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .cred-item .val{font-weight:600}
+  .cred-divider{width:1px;height:24px;background:var(--rule-light);flex-shrink:0}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:860px){
+    html{overflow-x:hidden}
+
+    .nav-links{display:none !important}
+    nav{padding-top:12px !important;padding-bottom:12px !important}
+    nav .container{padding:0 18px 0 22px !important;gap:10px !important}
+    nav .btn-primary{padding:8px 14px !important;font-size:12px !important;gap:6px !important;white-space:nowrap}
+    nav .btn-primary svg{display:none !important}
+    nav .text-logo .primary{font-size:18px !important}
+    nav .text-logo .secondary{font-size:8px !important;letter-spacing:0.2em !important}
+
+    section{padding-top:70px !important;padding-bottom:70px !important}
+
+    .m-stack{grid-template-columns:1fr !important;gap:40px !important}
+
+    /* Hero */
+    .hero-eyebrow .flex-rule{display:none !important}
+    .hero-eyebrow .eyebrow-num{display:none !important}
+    .hero-eyebrow{font-size:10px !important;gap:10px !important;flex-wrap:wrap !important}
+    .hero-grid{grid-template-columns:1fr !important;gap:36px !important;margin-top:36px !important}
+    .hero-headline{font-size:44px !important;line-height:1.02 !important}
+    .hero-right{align-items:flex-start !important;flex-direction:row !important;flex-wrap:wrap !important;gap:16px !important;width:100% !important}
+    .hero-incl{width:100% !important;flex:1 1 auto !important}
+    .hero-cta-row{justify-content:flex-start !important}
+
+    /* Credibility strip: stack 2x2 on mobile */
+    .cred-strip{flex-wrap:wrap !important;gap:12px 16px !important;padding:14px 16px !important}
+    .cred-item{flex:1 1 45% !important;font-size:12px !important}
+    .cred-divider{display:none !important}
+
+    /* Why-Ziv strip: 3 cols → 1 col */
+    .why-grid{grid-template-columns:1fr !important}
+    .why-grid > div{border-left:none !important;border-bottom:1px solid var(--rule) !important;padding:24px 2px !important}
+    .why-grid > div:last-child{border-bottom:none !important}
+    .why-grid .ornament-num{font-size:48px !important;margin-bottom:8px !important}
+
+    /* Services: 3 cols → 1 col */
+    .svc-grid{grid-template-columns:1fr !important;gap:16px !important}
+    .svc-grid > div{padding:28px 22px !important}
+
+    /* Testimonials: 3 cols → 1 col */
+    .testi-grid{grid-template-columns:1fr !important;gap:16px !important}
+
+    /* Gallery */
+    .gallery-grid{grid-template-columns:1fr 1fr !important;grid-auto-rows:150px !important;gap:8px !important}
+    .gallery-grid > *{grid-column:auto !important}
+
+    /* Contact */
+    .contact-grid{grid-template-columns:1fr !important;gap:50px !important}
+
+    /* Section heads */
+    .section-head{flex-direction:column !important;align-items:flex-start !important;gap:16px !important}
+
+    .h-serif-lg{font-size:38px !important;line-height:1.05 !important}
+
+    .marquee{animation-duration:22s !important}
+    .marquee .serif{font-size:26px !important}
+
+    /* Mobile pan on hero */
+    .kenburns{animation:mobilePan 16s ease-in-out infinite alternate !important}
+    @keyframes mobilePan{
+      from{transform:scale(1.35) translateX(7%)}
+      to  {transform:scale(1.35) translateX(-7%)}
+    }
+
+    /* FAQ */
+    .faq-trigger h4{font-size:17px !important}
+    .faq-trigger{padding:20px 0 !important}
+    .faq-body-inner{font-size:15px !important}
+
+    /* Footer big italic word */
+    .footer-word{font-size:56px !important;letter-spacing:-0.02em !important}
+    .quote-mark{font-size:80px !important}
+
+    .container{padding:0 18px !important}
+
+    /* Sticky CTA visible on mobile only */
+    .sticky-cta{display:flex !important}
+
+    /* Give content space above sticky bar */
+    body{padding-bottom:68px}
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useMemo } = React;
+
+const WHATSAPP_NUMBER = '972507386157';
+const PHONE_DISPLAY = '050-738-6157';
+
+const SERVICES = [
+  {
+    id:'private', roman:'I', name:'ארוחות שף פרטיות',
+    tagline:'האינטימי.',
+    blurb:'ארוחה אינטימית של 6–30 איש, אצלכם בבית או בחצר. תפריט טעימות אישי, הגשה של מסעדת שף, ואתם יושבים עם האורחים — לא במטבח.',
+    suitable:['ימי הולדת','ארוחות זוגיות','אירוח עסקי','חגים משפחתיים'],
+    size:'6–30 אורחים',
+    img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&auto=format&fit=crop',
+  },
+  {
+    id:'catering', roman:'II', name:'קייטרינג לאירועים',
+    tagline:'הגדול.',
+    blurb:'חתונות, בר/בת מצווה, אירועי חברה, ימי הולדת גדולים. מתפריט קוקטייל עד ארוחה מלאה בישיבה. מגיעים עם צוות, ציוד והגשה.',
+    suitable:['חתונות','בר / בת מצווה','אירועי חברה','ימי הולדת'],
+    size:'30–500 אורחים',
+    img:'https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80&auto=format&fit=crop',
+  },
+  {
+    id:'workshop', roman:'III', name:'סדנאות בישול',
+    tagline:'המעשי.',
+    blurb:'חוויה מעשית לצוותי חברה או קבוצות פרטיות. לומדים טכניקות אמיתיות של מטבח מקצועי, מבשלים ביחד, ואוכלים את מה שהכנו.',
+    suitable:['ימי גיבוש','מתנה מיוחדת','חברות קרובות','לקוחות VIP'],
+    size:'8–24 משתתפים',
+    img:'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80&auto=format&fit=crop',
+  },
+];
+
+const buildWhatsAppURL = (svcId) => {
+  const s = SERVICES.find(x => x.id === svcId);
+  const svcLine = s ? `השירות שמעניין אותי: ${s.name}` : 'עוד לא החלטתי על סוג האירוע.';
+  const lines = [
+    'היי זיו 👋',
+    'אשמח לקבל הצעה לאירוע.',
+    '',
+    svcLine,
+    '',
+    'פרטים נוספים:',
+    '• תאריך משוער:',
+    '• מספר אורחים:',
+    '• מיקום:',
+    '• הערות:',
+  ];
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+};
+
+const buildGenericWA = () => {
+  const lines = [
+    'היי זיו 👋',
+    'ראיתי את דף הנחיתה ואשמח לשמוע פרטים על האירוע שלי.',
+    '',
+    '• תאריך משוער:',
+    '• מספר אורחים:',
+    '• סוג האירוע:',
+    '• מיקום:',
+  ];
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+};
+
+// ---------- Logo (text only) ----------
+const Logo = () => (
+  <a href="#" aria-label="זיו אהרונוב" className="text-logo">
+    <span className="primary">Ziv Aharonov</span>
+    <span className="secondary">CHEF · EVENTS · 35 YEARS</span>
+  </a>
+);
+
+// ---------- Nav ----------
+const Nav = () => {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', h);
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  const items = [
+    { href: '#about',    label: 'הסיפור' },
+    { href: '#services', label: 'השירותים' },
+    { href: '#why',      label: 'למה זיו' },
+    { href: '#gallery',  label: 'גלריה' },
+    { href: '#faq',      label: 'שאלות נפוצות' },
+  ];
+  return (
+    <nav style={{
+      position:'fixed',top:0,left:0,right:0,zIndex:50,
+      padding: scrolled ? '14px 0' : '22px 0',
+      background: scrolled ? 'rgba(26,22,18,0.9)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(12px) saturate(140%)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'blur(12px) saturate(140%)' : 'none',
+      borderBottom: scrolled ? '1px solid var(--rule-light)' : '1px solid transparent',
+      transition:'all .35s ease'
+    }}>
+      <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:20}}>
+        <Logo />
+        <div style={{display:'flex',gap:32,alignItems:'center'}} className="nav-links">
+          {items.map(i =>
+            <a key={i.href} href={i.href} style={{fontSize:14,color:'var(--paper)',opacity:0.85,transition:'opacity .2s'}}
+               onMouseEnter={e=>e.currentTarget.style.opacity=1}
+               onMouseLeave={e=>e.currentTarget.style.opacity=0.85}>{i.label}</a>
+          )}
+        </div>
+        <a href="#contact" className="btn btn-primary" style={{padding:'10px 18px',fontSize:13}}>
+          קבלת הצעה
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </a>
+      </div>
+    </nav>
+  );
+};
+
+// ---------- Hero ----------
+const Hero = () => {
+  return (
+    <section style={{position:'relative',minHeight:'100vh',overflow:'hidden'}}>
+      <div style={{position:'absolute',inset:0,zIndex:0}}>
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1800&q=85&auto=format&fit=crop" className="kenburns hero-bg"
+          style={{width:'100%',height:'100%',objectFit:'cover'}}
+          alt="שף בפעולה"/>
+        <div className="hero-mask" style={{position:'absolute',inset:0}}/>
+      </div>
+
+      <div className="container" style={{position:'relative',zIndex:2,paddingTop:160,paddingBottom:60,minHeight:'100vh',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+        <div className="hero-eyebrow" style={{display:'flex',alignItems:'center',gap:14,opacity:0.9}}>
+          <span className="tick" style={{color:'var(--ember)'}}>●</span>
+          <span className="tick" style={{color:'var(--paper)'}}>שף לאירועים · 35 שנות ניסיון · ישראל</span>
+          <div className="flex-rule" style={{flex:1,height:1,background:'var(--rule)'}}/>
+          <span className="tick eyebrow-num" style={{color:'var(--paper-muted)'}}>№ 001</span>
+        </div>
+
+        <div className="hero-grid" style={{display:'grid',gridTemplateColumns:'1.35fr 1fr',gap:60,alignItems:'end',marginTop:40}}>
+          <div>
+            <div className="hand" style={{fontSize:44,color:'var(--ember)',marginBottom:6,transform:'rotate(-2deg)',display:'inline-block'}}>Chef —</div>
+            <h1 className="serif hero-headline" style={{
+              fontSize:'clamp(48px, 7.2vw, 118px)',
+              lineHeight:0.95,
+              fontWeight:500,
+              margin:'0 0 28px',
+              letterSpacing:'-0.025em',
+              color:'var(--paper)'
+            }}>
+              האירוע שלכם ראוי<br/>
+              לשף <span style={{fontWeight:700}}>אמיתי</span>
+              <span style={{color:'var(--ember)',fontStyle:'normal'}}>.</span>
+            </h1>
+            <p style={{fontSize:20,lineHeight:1.55,color:'var(--paper)',opacity:0.85,maxWidth:580,margin:0,fontWeight:300}}>
+              אני מגיע עם המטבח, החומרים והצוות — אתם רק נהנים מהאירוע.
+              ארוחות שף מותאמות אישית, הגשה של מסעדה, טעמים שהאורחים לא שוכחים.
+            </p>
+            <div className="hero-cta-row" style={{display:'flex',gap:14,marginTop:36,flexWrap:'wrap'}}>
+              <a href={buildGenericWA()} target="_blank" rel="noopener" className="btn btn-wa">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.253 18.494l.724.423A7.953 7.953 0 0012 20a8 8 0 10-8-8 7.95 7.95 0 001.08 4.023l.436.74-.919 3.34 3.656-.61zM2.004 22l1.352-4.968A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 01-5.03-1.355L2.004 22z"/></svg>
+                הצעה מותאמת בוואטסאפ
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </a>
+              <a href="#services" className="btn btn-ghost">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                ראו שירותים לדוגמה
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-right" style={{display:'flex',flexDirection:'column',gap:24,alignItems:'flex-end'}}>
+            <div className="hero-incl" style={{background:'rgba(14,13,11,0.55)',backdropFilter:'blur(8px)',border:'1px solid var(--rule)',padding:20,borderRadius:14,width:280}}>
+              <div className="tick" style={{color:'var(--paper-muted)',marginBottom:10}}>— מה אני מביא</div>
+              {[
+                ['👨‍🍳','שף עם 35 שנות ניסיון'],
+                ['🧑‍🤝‍🧑','צוות מקצועי'],
+                ['🔪','מטבח וציוד מלא'],
+                ['🌿','חומרי גלם טריים בלבד'],
+                ['🍽️','התאמה אישית מלאה'],
+              ].map(([e,t])=>(
+                <div key={t} style={{display:'flex',alignItems:'center',gap:10,padding:'6px 0',fontSize:14,color:'var(--paper)',opacity:0.92}}>
+                  <span style={{width:24,textAlign:'center'}}>{e}</span>{t}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Credibility strip */}
+        <div className="cred-strip" style={{marginTop:50}}>
+          <div className="cred-item"><span className="ic">★</span><span><span className="val">5.0</span> · דירוג גוגל</span></div>
+          <div className="cred-divider"/>
+          <div className="cred-item"><span className="ic">🍽️</span><span><span className="val">1,000+</span> · אירועים</span></div>
+          <div className="cred-divider"/>
+          <div className="cred-item"><span className="ic">🏆</span><span><span className="val">35</span> · שנות ניסיון</span></div>
+          <div className="cred-divider"/>
+          <div className="cred-item"><span className="ic">🌿</span><span><span className="val">100%</span> · חומרי גלם טריים</span></div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Marquee ----------
+const MarqueeBand = () => {
+  const items = ["Chef's Table", "ארוחת שף", "Tasting Menu", "Private Events", "קייטרינג", "Fine Dining", "סדנאות בישול", "Custom Menu"];
+  const row = [...items, ...items, ...items];
+  return (
+    <section style={{padding:'28px 0',background:'var(--paper-2)',color:'var(--ink)',overflow:'hidden',borderTop:'1px solid var(--rule)',borderBottom:'1px solid var(--rule)'}}>
+      <div className="marquee">
+        {row.map((t,i)=>(
+          <div key={i} style={{display:'flex',alignItems:'center',gap:64}}>
+            <span className="serif" style={{fontSize:40,fontStyle:'italic',fontWeight:400}}>{t}</span>
+            <span style={{width:8,height:8,background:'var(--ember-deep)',borderRadius:'50%'}}/>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+// ---------- About ----------
+const About = () => {
+  return (
+    <section id="about" style={{padding:'120px 0',background:'var(--paper)',color:'var(--ink)',position:'relative'}}>
+      <div className="container">
+        <div className="m-stack" style={{display:'grid',gridTemplateColumns:'1fr 1.2fr',gap:80,alignItems:'start'}}>
+          <div style={{position:'relative'}}>
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1200&q=85&auto=format&fit=crop" style={{width:'100%',borderRadius:6,filter:'grayscale(0.05) contrast(1.05)',boxShadow:'0 30px 60px -30px rgba(26,22,18,0.35)'}} alt="זיו אהרונוב בעבודה"/>
+            <div style={{
+              position:'absolute',bottom:-30,left:-30,width:210,
+              background:'var(--ink)',color:'var(--paper)',padding:'18px 20px',borderRadius:6,
+              boxShadow:'0 20px 40px rgba(26,22,18,0.3)',transform:'rotate(-3deg)'
+            }}>
+              <div className="hand" style={{fontSize:28,color:'var(--ember)',lineHeight:1}}>Ziv</div>
+              <div className="serif" style={{fontSize:19,fontWeight:700,marginTop:4,color:'var(--paper)'}}>זיו אהרונוב</div>
+              <div className="tick" style={{color:'var(--paper-muted)',marginTop:4}}>CHEF · 35 YRS</div>
+            </div>
+          </div>
+
+          <div>
+            <div className="tick" style={{color:'var(--ember-deep)',marginBottom:18}}>— קצת עליי</div>
+            <h2 className="serif" style={{fontSize:'clamp(40px,5vw,68px)',lineHeight:1.05,fontWeight:400,margin:'0 0 30px',letterSpacing:'-0.02em',color:'var(--ink)'}}>
+              אלפי אירועים מאחוריי.<br/>
+              ואני עדיין <em>מתלהב</em> מכל שולחן מחדש.
+            </h2>
+            <p style={{fontSize:18,lineHeight:1.7,color:'var(--ink-3)',opacity:0.92,fontWeight:400,marginBottom:22}}>
+              אני זיו אהרונוב. חי ונושם את המטבח מאז שאני זוכר את עצמי — בסדנאות בחו״ל, באירועים של אלפי אורחים, בארוחות אינטימיות של שישה אנשים בחצר פרטית.
+            </p>
+            <p style={{fontSize:18,lineHeight:1.7,color:'var(--ink-3)',opacity:0.92,fontWeight:400,marginBottom:22}}>
+              מה שלמדתי במהלך הדרך זה שאירוע מוצלח הוא לא רק עניין של אוכל טוב. זה הרגע שבו אתם יושבים עם האורחים שלכם <strong style={{color:'var(--ink)',fontWeight:700}}>בלי לדאוג למטבח</strong>, בלי לרוץ בין המנות, ובלי לקוות שהכל יצא בסדר. זו העבודה שלי — שהכל ייצא מושלם, בשקט, מאחורי הקלעים.
+            </p>
+            <p style={{fontSize:18,lineHeight:1.7,color:'var(--ink-3)',opacity:0.92,fontWeight:400,marginBottom:44}}>
+              כל ארוחה שאני מגיש היא חדשה. אני לא עובד מתפריט קבוע, אני בונה כל אירוע סביבכם — הטעמים שאתם אוהבים, האורחים שיגיעו, והאווירה שאתם רוצים.
+            </p>
+
+            {/* Stats */}
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20,paddingTop:30,borderTop:'1px solid var(--rule)'}}>
+              {[
+                ['1,000+','אירועים'],
+                ['5 ★','דירוג גוגל'],
+                ['100%','התאמה אישית'],
+              ].map(([n,l])=>(
+                <div key={l}>
+                  <div className="serif" style={{fontSize:44,fontWeight:500,lineHeight:1,color:'var(--ember-deep)',marginBottom:6}}>
+                    <span className="ltr">{n}</span>
+                  </div>
+                  <div className="tick" style={{color:'var(--ink-muted)'}}>{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Services ----------
+const Services = () => {
+  return (
+    <section id="services" style={{padding:'140px 0 120px',background:'var(--paper-2)',color:'var(--ink)',position:'relative'}}>
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:70}}>
+          <div className="tick" style={{color:'var(--ember-deep)',marginBottom:14}}>— מה אני עושה</div>
+          <h2 className="serif h-serif-lg" style={{fontSize:'clamp(42px,5vw,72px)',lineHeight:1.05,fontWeight:400,margin:'0 0 16px',letterSpacing:'-0.02em',color:'var(--ink)'}}>
+            שלוש דרכים להביא אותי<br/>
+            ל<em>אירוע שלכם</em>.
+          </h2>
+          <p style={{fontSize:17,color:'var(--ink-muted)',maxWidth:620,margin:'0 auto',lineHeight:1.6}}>
+            מארוחת טעימות אינטימית לשישה אנשים ועד אירוע חברה של 500 — כל פורמט נבנה מחדש סביבכם.
+          </p>
+        </div>
+
+        <div className="svc-grid" style={{display:'grid',gridTemplateColumns:'repeat(3, minmax(0,1fr))',gap:22}}>
+          {SERVICES.map((s, idx) => {
+            const isHigh = idx === 0;
+            return (
+            <div key={s.id} style={{
+              background: isHigh ? 'var(--paper)' : 'var(--paper)',
+              border: isHigh ? '1px solid var(--ember-deep)' : '1px solid var(--rule)',
+              borderRadius:12,
+              padding:'36px 32px 32px',
+              display:'flex',flexDirection:'column',
+              position:'relative',
+              transition:'all .35s ease',
+              boxShadow: isHigh
+                ? '0 30px 60px -30px rgba(180,90,40,0.35), 0 1px 2px rgba(26,22,18,0.06)'
+                : '0 1px 2px rgba(26,22,18,0.04)',
+            }}
+              onMouseEnter={e=>{
+                if(!isHigh){e.currentTarget.style.boxShadow='0 20px 50px -25px rgba(26,22,18,0.18)';e.currentTarget.style.transform='translateY(-3px)';}
+              }}
+              onMouseLeave={e=>{
+                if(!isHigh){e.currentTarget.style.boxShadow='0 1px 2px rgba(26,22,18,0.04)';e.currentTarget.style.transform='none';}
+              }}>
+              {isHigh && (
+                <div style={{position:'absolute',top:-12,right:32,background:'var(--ember-deep)',color:'var(--paper)',padding:'4px 12px',borderRadius:999,fontSize:11,fontWeight:600,letterSpacing:'0.1em'}} className="mono">
+                  POPULAR
+                </div>
+              )}
+              <div style={{display:'flex',alignItems:'baseline',justifyContent:'space-between',marginBottom:8}}>
+                <span className="ornament-num" style={{fontSize:36,color:'var(--ember-deep)'}}>{s.roman}</span>
+                <span className="tick" style={{color:'var(--ink-muted)'}}>{s.tagline}</span>
+              </div>
+              <h3 className="serif" style={{fontSize:30,fontWeight:400,margin:'0 0 12px',letterSpacing:'-0.01em',color:'var(--ink)'}}>{s.name}</h3>
+
+              <div style={{display:'flex',alignItems:'baseline',gap:6,paddingBottom:20,borderBottom:'1px solid var(--rule)',marginBottom:22}}>
+                <span className="mono" style={{fontSize:12,color:'var(--ink-muted)',letterSpacing:'0.15em'}}>כמות</span>
+                <span className="serif" style={{fontSize:22,fontWeight:500,color:'var(--ink)',marginRight:8}}>
+                  <span className="ltr">{s.size}</span>
+                </span>
+              </div>
+
+              <p style={{fontSize:15,lineHeight:1.65,color:'var(--ink-3)',opacity:0.88,marginBottom:24,minHeight:110}}>{s.blurb}</p>
+
+              <div style={{marginBottom:28,flex:1}}>
+                <div className="tick" style={{color:'var(--ink-muted)',marginBottom:12}}>— מתאים ל</div>
+                {s.suitable.map(i=>(
+                  <div key={i} style={{display:'flex',alignItems:'flex-start',gap:10,padding:'6px 0',fontSize:14,color:'var(--ink)',opacity:0.9}}>
+                    <svg width="14" height="14" viewBox="0 0 14 14" style={{flexShrink:0,marginTop:3}}>
+                      <path d="M3 7 L6 10 L11 4" stroke="var(--ember-deep)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>{i}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a href={buildWhatsAppURL(s.id)} target="_blank" rel="noopener" className={isHigh ? 'btn btn-primary' : 'btn btn-ghost'} style={{width:'100%',justifyContent:'center'}}>
+                דברו איתי בוואטסאפ
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </a>
+            </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Why Ziv ----------
+const WhyZiv = () => {
+  const reasons = [
+    { n:'01', t:'הניסיון בצלחת', d:'לא בישלתי שנה אחת הרבה פעמים. כל שנה הביאה טכניקות חדשות, סדנאות, מטבחים שונים. מה שאתם מקבלים זה הניסיון המצטבר — בצלחת.' },
+    { n:'02', t:'תפריט שנבנה סביבכם', d:'אין אצלי "תפריט קבוע". לפני כל אירוע אנחנו מדברים — על האורחים, הטעמים, האלרגיות, האווירה. התפריט נבנה עבור האירוע הספציפי הזה בלבד.' },
+    { n:'03', t:'אתם נהנים, אני דואג לכל השאר', d:'חומרי גלם, ציוד, צוות, הגשה, פינוי. אתם לא נכנסים למטבח ולא רצים אחרי מלצרים. זה מה שאתם משלמים עליו — שקט נפשי באירוע שלכם.' },
+  ];
+  return (
+    <section id="why" style={{padding:'140px 0 120px',background:'var(--paper)',color:'var(--ink)',position:'relative',overflow:'hidden'}}>
+      <div className="container">
+        <div className="m-stack" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:60,alignItems:'center',marginBottom:80}}>
+          <div>
+            <div className="tick" style={{color:'var(--ember-deep)',marginBottom:18}}>— למה זיו</div>
+            <h2 className="serif h-serif-lg" style={{fontSize:'clamp(38px,4.5vw,60px)',lineHeight:1.05,fontWeight:400,margin:0,letterSpacing:'-0.02em',color:'var(--ink)'}}>
+              שלוש סיבות <em>שבגללן</em><br/>
+              לקוחות חוזרים שוב ושוב.
+            </h2>
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=85&auto=format&fit=crop" style={{width:'100%',borderRadius:6,objectFit:'cover',maxHeight:380,boxShadow:'0 30px 60px -30px rgba(26,22,18,0.35)'}} alt="מנת שף מוגשת"/>
+          </div>
+        </div>
+
+        <div className="why-grid" style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:0,borderTop:'1px solid var(--rule)'}}>
+          {reasons.map((s,i)=>(
+            <div key={s.n} style={{
+              padding:'32px 28px 32px 28px',
+              borderLeft: i < reasons.length-1 ? '1px solid var(--rule)' : 'none',
+              position:'relative'
+            }}>
+              <div className="ornament-num" style={{fontSize:64,color:'var(--ember-deep)',marginBottom:14}}>
+                <span className="ltr">{s.n}</span>
+              </div>
+              <h4 className="serif" style={{fontSize:24,fontWeight:600,margin:'0 0 12px',color:'var(--ink)',letterSpacing:'-0.01em'}}>{s.t}</h4>
+              <p style={{fontSize:15,lineHeight:1.7,color:'var(--ink-3)',opacity:0.82,margin:0}}>{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Gallery ----------
+const Gallery = () => {
+  const imgs = [
+    { src:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=80&auto=format&fit=crop', span:2, cap:'פיצה שף' },
+    { src:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1000&q=80&auto=format&fit=crop', span:1, cap:'אירוע' },
+    { src:'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=1000&q=80&auto=format&fit=crop', span:1, cap:'סלט שף' },
+    { src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80&auto=format&fit=crop', span:2, cap:'מנת שף' },
+    { src:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1000&q=80&auto=format&fit=crop', span:1, cap:'עיקרית' },
+    { src:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1000&q=80&auto=format&fit=crop', span:1, cap:'ירקות' },
+    { src:'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1000&q=80&auto=format&fit=crop', span:1, cap:'סדנה' },
+    { src:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1000&q=80&auto=format&fit=crop', span:1, cap:'קינוח' },
+  ];
+  return (
+    <section id="gallery" style={{padding:'140px 0 120px',background:'var(--ink-2)',color:'var(--paper)'}}>
+      <div className="container">
+        <div className="section-head" style={{display:'flex',justifyContent:'space-between',alignItems:'end',marginBottom:50,flexWrap:'wrap',gap:20}}>
+          <div>
+            <div className="tick" style={{color:'var(--ember)',marginBottom:14}}>— הגלריה</div>
+            <h2 className="serif h-serif-lg" style={{fontSize:'clamp(38px,4.5vw,60px)',lineHeight:1.05,fontWeight:400,margin:0,letterSpacing:'-0.02em',color:'var(--paper)'}}>
+              רגעים <em>מהאירועים</em>.
+            </h2>
+          </div>
+          <a href={buildGenericWA()} target="_blank" rel="noopener" style={{fontSize:14,color:'var(--paper-muted)',borderBottom:'1px solid var(--paper-muted)',paddingBottom:2}}>
+            רוצים לארח את זיו? ←
+          </a>
+        </div>
+        <div className="gallery-grid" style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gridAutoRows:'220px',gap:14}}>
+          {imgs.map((im,i)=>(
+            <div key={i} className="tilt" style={{
+              gridColumn:`span ${im.span}`,
+              position:'relative',overflow:'hidden',borderRadius:6
+            }}>
+              <img src={im.src} style={{width:'100%',height:'100%',objectFit:'cover'}} alt={im.cap}/>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Testimonials ----------
+const Testimonials = () => {
+  const list = [
+    { q:'זיו הפתיע אותנו בכל מנה. האוכל היה מדהים, ההגשה כמו ממסעדת שף, והאורחים לא הפסיקו לדבר על זה שבועות אחרי.', n:'מיכל רוזנברג', r:'חתונה פרטית' },
+    { q:'הזמנו אותו לאירוע חברה של 120 איש. הגיוון, הטעמים, הצבעוניות — הכל היה ברמה אחרת לגמרי. כולם שאלו מי השף.', n:'אורי דניאל', r:'מנהל שיווק, הייטק' },
+    { q:'הסדנה עם זיו הייתה חוויה בלתי נשכחת לצוות. למדנו, טעמנו, צחקנו — ובסוף אכלנו ארוחה שלא נשכחת.', n:'דנה כהן־לוי', r:'סדנת גיבוש צוות' },
+  ];
+  return (
+    <section id="testimonials" style={{padding:'140px 0 120px',background:'var(--ink)',color:'var(--paper)'}}>
+      <div className="container">
+        <div style={{textAlign:'center',marginBottom:70}}>
+          <div className="tick" style={{color:'var(--ember)',marginBottom:14}}>— מה אומרים</div>
+          <h2 className="serif h-serif-lg" style={{fontSize:'clamp(42px,5vw,72px)',lineHeight:1.05,fontWeight:400,margin:'0 0 16px',letterSpacing:'-0.02em',color:'var(--paper)'}}>
+            לקוחות <em>לא שוכחים</em><br/>
+            אירוע שיצא מושלם.
+          </h2>
+        </div>
+        <div className="testi-grid" style={{display:'grid',gridTemplateColumns:'repeat(3,minmax(0,1fr))',gap:22}}>
+          {list.map((t,i)=>(
+            <div key={i} className="testi-card">
+              <div className="testi-stars">★★★★★</div>
+              <p className="serif" style={{fontSize:19,lineHeight:1.55,fontWeight:400,margin:0,color:'var(--ink)',letterSpacing:'-0.005em',position:'relative',zIndex:1}}>
+                {t.q}
+              </p>
+              <div style={{marginTop:'auto',paddingTop:20,borderTop:'1px solid var(--rule)',display:'flex',alignItems:'center',gap:12}}>
+                <div style={{width:40,height:40,borderRadius:'50%',background:'var(--ember)',color:'var(--paper)',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700,fontSize:16,flexShrink:0}}>
+                  {t.n.charAt(0)}
+                </div>
+                <div>
+                  <div style={{fontSize:14,fontWeight:600,color:'var(--ink)'}}>{t.n}</div>
+                  <div className="tick" style={{color:'var(--ink-muted)',marginTop:2}}>{t.r}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Philosophy Quote ----------
+const Quote = () => (
+  <section style={{padding:'120px 0',background:'var(--paper)',color:'var(--ink)'}}>
+    <div className="container" style={{textAlign:'center',maxWidth:980,margin:'0 auto'}}>
+      <div className="tick" style={{color:'var(--ember-deep)',marginBottom:18,letterSpacing:'0.2em'}}>— הגישה שלי</div>
+      <div className="serif quote-mark" style={{fontSize:120,color:'var(--ember-deep)',lineHeight:0.5,marginBottom:10,opacity:0.5}}>“</div>
+      <p className="serif" style={{fontSize:'clamp(28px,3.8vw,48px)',lineHeight:1.25,fontWeight:400,fontStyle:'italic',margin:'0 0 32px',letterSpacing:'-0.015em'}}>
+        אירוע לא נמדד במנה הראשונה.<br/>
+        הוא נמדד במה שהאורחים <strong style={{fontWeight:700,fontStyle:'normal'}}>זוכרים</strong><br/>
+        שבוע אחרי.
+      </p>
+      <p style={{fontSize:16,lineHeight:1.7,color:'var(--ink-3)',opacity:0.8,maxWidth:600,margin:'0 auto'}}>
+        כל מנה שאני מגיש נבנית סביב הרגע הזה — הטעם, הצבע, ההגשה, התזמון. כי בישול זה לא רק אוכל. זו אמנות שנוגעת בכל החושים.
+      </p>
+      <div style={{marginTop:32,display:'flex',alignItems:'center',justifyContent:'center',gap:12}}>
+        <div style={{width:40,height:1,background:'var(--ink-3)'}}/>
+        <div className="hand" style={{fontSize:32,color:'var(--ember-deep)'}}>Ziv Aharonov</div>
+        <div style={{width:40,height:1,background:'var(--ink-3)'}}/>
+      </div>
+    </div>
+  </section>
+);
+
+// ---------- FAQ ----------
+const FAQ = () => {
+  const items = [
+    { q:'כמה זמן מראש צריך להזמין?', a:'כמה שיותר מוקדם — במיוחד בעונות החמות. אני ממליץ 4–6 שבועות לפני האירוע לקייטרינג, 2–3 שבועות לארוחות שף פרטיות. אבל תמיד שווה לשאול — לפעמים יש חלון פנוי.' },
+    { q:'איך נראה תהליך העבודה?', a:'שיחה ראשונה בוואטסאפ או בטלפון — אני מבין את האירוע, המספרים, הסגנון. שולח הצעה מותאמת עם תפריט. אחרי שמאשרים — אני דואג לכל השאר עד סוף האירוע.' },
+    { q:'האם אפשר להתאים תפריט לאלרגיות ודיאטות?', a:'כן, תמיד. טבעוני, ללא גלוטן, כשר, אלרגיות ספציפיות — הכל נלקח בחשבון בשלב בניית התפריט. אני לא מאלתר ברגע האחרון.' },
+    { q:'איפה אתם עובדים?', a:'בעיקר בצפון ובמרכז. לאירועים גדולים מגיע לכל הארץ.' },
+    { q:'כמה זה עולה?', a:'המחיר משתנה לפי מספר האורחים, סוג האירוע, והתפריט. ארוחות שף פרטיות מתחילות ממחיר לאדם, אירועים גדולים נבנים לפי הצרכים. דברו איתי ואשלח הצעה מדויקת תוך יום.' },
+  ];
+  const [open, setOpen] = useState(0);
+
+  return (
+    <section id="faq" style={{padding:'140px 0 120px',background:'var(--paper-2)',color:'var(--ink)'}}>
+      <div className="container">
+        <div className="section-head" style={{display:'flex',justifyContent:'space-between',alignItems:'end',marginBottom:40,flexWrap:'wrap',gap:20}}>
+          <div>
+            <div className="tick" style={{color:'var(--ember-deep)',marginBottom:14}}>— שאלות נפוצות</div>
+            <h2 className="serif h-serif-lg" style={{fontSize:'clamp(40px,5vw,64px)',lineHeight:1.05,fontWeight:400,margin:0,letterSpacing:'-0.02em',color:'var(--ink)'}}>
+              שאלות <em>שחוזרות</em>.
+            </h2>
+          </div>
+          <a href={buildGenericWA()} target="_blank" rel="noopener" className="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.253 18.494l.724.423A7.953 7.953 0 0012 20a8 8 0 10-8-8 7.95 7.95 0 001.08 4.023l.436.74-.919 3.34 3.656-.61zM2.004 22l1.352-4.968A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 01-5.03-1.355L2.004 22z"/></svg>
+            יש לכם שאלה אחרת?
+          </a>
+        </div>
+
+        <div style={{maxWidth:940,margin:'20px auto 0'}}>
+          {items.map((it,idx)=>{
+            const isOpen = open === idx;
+            return (
+              <div key={idx} className="faq-item">
+                <button className="faq-trigger" aria-expanded={isOpen} onClick={()=>setOpen(isOpen ? -1 : idx)}>
+                  <h4>{it.q}</h4>
+                  <span className="faq-icon">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 1v12M1 7h12" strokeLinecap="round"/></svg>
+                  </span>
+                </button>
+                <div className="faq-body" style={{maxHeight: isOpen ? '500px' : '0'}}>
+                  <div className="faq-body-inner">{it.a}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Contact ----------
+const Contact = () => {
+  const whatsappURL = buildGenericWA();
+  return (
+    <section id="contact" style={{padding:'140px 0 80px',background:'var(--ink)',color:'var(--paper)',position:'relative',overflow:'hidden'}}>
+      <div className="container">
+        <div className="contact-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:80,alignItems:'start'}}>
+          <div>
+            <div className="tick" style={{color:'var(--ember)',marginBottom:14}}>— בואו נדבר</div>
+            <h2 className="serif" style={{fontSize:'clamp(42px,5vw,72px)',lineHeight:1.05,fontWeight:400,margin:'0 0 28px',letterSpacing:'-0.02em',color:'var(--paper)'}}>
+              האירוע הבא שלכם<br/>
+              מתחיל ב<em>שיחה קצרה</em>.
+            </h2>
+            <p style={{fontSize:17,lineHeight:1.7,color:'var(--paper)',opacity:0.9,marginBottom:40,maxWidth:480}}>
+              שלחו הודעה בוואטסאפ עם תאריך, מספר אורחים וסוג אירוע — ואחזור אליכם תוך שעות עם הצעה מותאמת אישית.
+            </p>
+
+            <div style={{display:'flex',flexDirection:'column',gap:20}}>
+              <a href={`tel:+${WHATSAPP_NUMBER}`} style={{display:'flex',alignItems:'center',gap:16,padding:'18px 20px',border:'1px solid var(--rule-light)',borderRadius:8,transition:'all .25s'}}
+                 onMouseEnter={e=>e.currentTarget.style.borderColor='var(--ember)'}
+                 onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(250,244,226,0.18)';}}>
+                <div style={{width:44,height:44,borderRadius:'50%',background:'var(--ember)',color:'var(--paper)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div>
+                  <div className="mono" style={{fontSize:11,color:'var(--paper-muted)',letterSpacing:'0.1em'}}>PHONE</div>
+                  <div style={{fontSize:18,fontWeight:500,color:'var(--paper)'}}><span className="ltr">{PHONE_DISPLAY}</span></div>
+                </div>
+              </a>
+              <a href={whatsappURL} target="_blank" rel="noopener" style={{display:'flex',alignItems:'center',gap:16,padding:'18px 20px',border:'1px solid var(--rule-light)',borderRadius:8,transition:'all .25s'}}
+                 onMouseEnter={e=>e.currentTarget.style.borderColor='var(--ember)'}
+                 onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(250,244,226,0.18)';}}>
+                <div style={{width:44,height:44,borderRadius:'50%',background:'var(--ember)',color:'var(--paper)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.253 18.494l.724.423A7.953 7.953 0 0012 20a8 8 0 10-8-8 7.95 7.95 0 001.08 4.023l.436.74-.919 3.34 3.656-.61zM2.004 22l1.352-4.968A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 01-5.03-1.355L2.004 22z"/></svg>
+                </div>
+                <div>
+                  <div className="mono" style={{fontSize:11,color:'var(--paper-muted)',letterSpacing:'0.1em'}}>WHATSAPP</div>
+                  <div style={{fontSize:18,fontWeight:500,color:'var(--paper)'}}>להודעה מהירה</div>
+                </div>
+              </a>
+              <div style={{display:'flex',alignItems:'center',gap:16,padding:'18px 20px',border:'1px solid var(--rule-light)',borderRadius:8}}>
+                <div style={{width:44,height:44,borderRadius:'50%',background:'var(--ember)',color:'var(--paper)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div className="mono" style={{fontSize:11,color:'var(--paper-muted)',letterSpacing:'0.1em'}}>אזור פעילות</div>
+                  <div style={{fontSize:18,fontWeight:500,color:'var(--paper)'}}>צפון · מרכז · כל הארץ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* WhatsApp CTA card */}
+          <div style={{background:'var(--ink-2)',border:'1px solid var(--rule-light)',borderRadius:12,padding:40,position:'relative',color:'var(--paper)'}}>
+            <div className="tick" style={{color:'var(--paper-muted)',marginBottom:18}}>— שליחת פנייה</div>
+            <h3 className="serif" style={{fontSize:34,margin:'0 0 14px',fontWeight:400,letterSpacing:'-0.01em',lineHeight:1.1,color:'var(--paper)'}}>
+              הצעה מותאמת<br/>
+              תוך <em>שעות ספורות</em>.
+            </h3>
+            <p style={{fontSize:15,lineHeight:1.65,color:'var(--paper)',opacity:0.85,margin:'0 0 28px'}}>
+              לחיצה אחת, וההודעה תיפתח אצלכם עם הפרטים הבסיסיים שאני צריך. רק תשלימו תאריך, כמות אורחים וסוג אירוע — ואחזור אליכם עם הצעה מדויקת.
+            </p>
+
+            <div style={{background:'var(--ink)',border:'1px solid var(--rule-light)',borderRadius:10,padding:'22px 24px',marginBottom:28}}>
+              <div className="mono" style={{fontSize:11,color:'var(--paper-muted)',letterSpacing:'0.15em',marginBottom:14}}>בוחרים סוג אירוע</div>
+              <div style={{display:'flex',flexDirection:'column',gap:10}}>
+                {SERVICES.map(s => (
+                  <a key={s.id} href={buildWhatsAppURL(s.id)} target="_blank" rel="noopener"
+                    style={{
+                      display:'flex',alignItems:'center',justifyContent:'space-between',
+                      padding:'14px 16px',borderRadius:8,border:'1px solid var(--rule-light)',color:'var(--paper)',
+                      transition:'all .2s ease',cursor:'pointer'
+                    }}
+                    onMouseEnter={e=>{e.currentTarget.style.borderColor='var(--ember)';e.currentTarget.style.background='rgba(250,244,226,0.06)';}}
+                    onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(250,244,226,0.18)';e.currentTarget.style.background='transparent';}}>
+                    <div style={{display:'flex',alignItems:'baseline',gap:10}}>
+                      <span className="ornament-num" style={{fontSize:18,color:'var(--ember)'}}>{s.roman}</span>
+                      <span className="serif" style={{fontSize:18,fontWeight:500,color:'var(--paper)'}}>{s.name}</span>
+                    </div>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{color:'var(--paper-muted)'}}><path d="M15 18l-6-6 6-6"/></svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <a href={whatsappURL} target="_blank" rel="noopener" className="btn btn-wa" style={{width:'100%',justifyContent:'center',padding:'16px',fontSize:16,fontWeight:600}}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.253 18.494l.724.423A7.953 7.953 0 0012 20a8 8 0 10-8-8 7.95 7.95 0 001.08 4.023l.436.74-.919 3.34 3.656-.61zM2.004 22l1.352-4.968A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 01-5.03-1.355L2.004 22z"/></svg>
+              פתיחת שיחה בוואטסאפ
+            </a>
+            <div style={{marginTop:14,textAlign:'center',fontSize:12,color:'var(--paper-muted)'}}>
+              או התקשרו ישירות: <a href={`tel:+${WHATSAPP_NUMBER}`} className="ltr" style={{color:'var(--ember)',borderBottom:'1px solid var(--ember)'}}>{PHONE_DISPLAY}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ---------- Footer ----------
+const Footer = () => (
+  <footer style={{padding:'60px 0 40px',background:'var(--ink)',borderTop:'1px solid var(--rule-light)'}}>
+    <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:20,flexWrap:'wrap'}}>
+      <Logo />
+      <div style={{fontSize:13,color:'var(--paper-muted)'}}>
+        © 2026 זיו אהרונוב · שף לאירועים · כל הזכויות שמורות
+      </div>
+      <div style={{display:'flex',gap:20,fontSize:13,color:'var(--paper-muted)'}}>
+        <a href="#">תקנון</a>
+        <a href="#">פרטיות</a>
+        <a href="#">נגישות</a>
+      </div>
+    </div>
+    <div className="container" style={{marginTop:40,paddingTop:30,borderTop:'1px solid var(--rule-light)'}}>
+      <div className="serif footer-word" style={{fontSize:'clamp(60px,14vw,220px)',lineHeight:0.9,fontWeight:700,letterSpacing:'-0.04em',color:'var(--paper)',textAlign:'center',fontStyle:'italic'}}>
+        Ziv Aharonov — Bon Appétit.
+      </div>
+    </div>
+    <div className="container" style={{marginTop:24,display:'flex',justifyContent:'center'}}>
+      <a href={`https://wa.me/972526331295?text=${encodeURIComponent('היי הגעתי מדף הנחיתה של זיו אהרונוב')}`}
+         target="_blank" rel="noopener"
+         className="mono"
+         style={{
+           fontSize:11,letterSpacing:'0.25em',color:'var(--paper-muted)',
+           display:'inline-flex',alignItems:'center',gap:8,opacity:0.6,
+           transition:'opacity .2s, color .2s'
+         }}
+         onMouseEnter={e=>{e.currentTarget.style.opacity=1;e.currentTarget.style.color='var(--ember)';}}
+         onMouseLeave={e=>{e.currentTarget.style.opacity=0.6;e.currentTarget.style.color='var(--paper-muted)';}}>
+        POWERED BY KLIX
+      </a>
+    </div>
+  </footer>
+);
+
+// ---------- Sticky mobile CTA ----------
+const StickyMobileCTA = () => {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const h = () => setShow(window.scrollY > 600);
+    window.addEventListener('scroll', h);
+    h();
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  return (
+    <div className="sticky-cta" style={{opacity: show ? 1 : 0, pointerEvents: show ? 'auto' : 'none', transition:'opacity .3s'}}>
+      <div className="label">רוצים הצעה <strong>לאירוע שלכם?</strong></div>
+      <a href={buildGenericWA()} target="_blank" rel="noopener" className="btn btn-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.253 18.494l.724.423A7.953 7.953 0 0012 20a8 8 0 10-8-8 7.95 7.95 0 001.08 4.023l.436.74-.919 3.34 3.656-.61zM2.004 22l1.352-4.968A9.954 9.954 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 01-5.03-1.355L2.004 22z"/></svg>
+        וואטסאפ
+      </a>
+    </div>
+  );
+};
+
+// ---------- App ----------
+const App = () => {
+  useEffect(() => {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold:0.08 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <MarqueeBand />
+      <About />
+      <Services />
+      <WhyZiv />
+      <Gallery />
+      <Testimonials />
+      <Quote />
+      <FAQ />
+      <Contact />
+      <Footer />
+      <StickyMobileCTA />
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
