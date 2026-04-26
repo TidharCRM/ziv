@@ -219,10 +219,6 @@
     /* Testimonials: 3 cols → 1 col */
     .testi-grid{grid-template-columns:1fr !important;gap:16px !important}
 
-    /* Gallery */
-    .gallery-grid{grid-template-columns:1fr 1fr !important;grid-auto-rows:150px !important;gap:8px !important}
-    .gallery-grid > *{grid-column:auto !important}
-
     /* Contact */
     .contact-grid{grid-template-columns:1fr !important;gap:50px !important}
 
@@ -276,7 +272,6 @@ const SERVICES = [
     blurb:'ארוחה אינטימית של 6–30 איש, אצלכם בבית או בחצר. תפריט טעימות אישי, הגשה של מסעדת שף, ואתם יושבים עם האורחים — לא במטבח.',
     suitable:['ימי הולדת','ארוחות זוגיות','אירוח עסקי','חגים משפחתיים'],
     size:'6–30 אורחים',
-    img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&auto=format&fit=crop',
   },
   {
     id:'catering', roman:'II', name:'קייטרינג לאירועים',
@@ -284,7 +279,6 @@ const SERVICES = [
     blurb:'חתונות, בר/בת מצווה, אירועי חברה, ימי הולדת גדולים. מתפריט קוקטייל עד ארוחה מלאה בישיבה. מגיעים עם צוות, ציוד והגשה.',
     suitable:['חתונות','בר / בת מצווה','אירועי חברה','ימי הולדת'],
     size:'30–500 אורחים',
-    img:'https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80&auto=format&fit=crop',
   },
   {
     id:'workshop', roman:'III', name:'סדנאות בישול',
@@ -292,7 +286,6 @@ const SERVICES = [
     blurb:'חוויה מעשית לצוותי חברה או קבוצות פרטיות. לומדים טכניקות אמיתיות של מטבח מקצועי, מבשלים ביחד, ואוכלים את מה שהכנו.',
     suitable:['ימי גיבוש','מתנה מיוחדת','חברות קרובות','לקוחות VIP'],
     size:'8–24 משתתפים',
-    img:'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80&auto=format&fit=crop',
   },
 ];
 
@@ -347,7 +340,6 @@ const Nav = () => {
     { href: '#about',    label: 'הסיפור' },
     { href: '#services', label: 'השירותים' },
     { href: '#why',      label: 'למה זיו' },
-    { href: '#gallery',  label: 'גלריה' },
     { href: '#faq',      label: 'שאלות נפוצות' },
   ];
   return (
@@ -383,9 +375,25 @@ const Hero = () => {
   return (
     <section style={{position:'relative',minHeight:'100vh',overflow:'hidden'}}>
       <div style={{position:'absolute',inset:0,zIndex:0}}>
-        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1800&q=85&auto=format&fit=crop" className="kenburns hero-bg"
-          style={{width:'100%',height:'100%',objectFit:'cover'}}
-          alt="שף בפעולה"/>
+        <div style={{
+          width:'100%',height:'100%',position:'relative',
+          background:`
+            radial-gradient(ellipse 60% 50% at 25% 20%, rgba(180,90,40,0.45) 0%, transparent 60%),
+            radial-gradient(ellipse 55% 45% at 80% 85%, rgba(220,130,60,0.22) 0%, transparent 60%),
+            linear-gradient(180deg, #1A1612 0%, #0E0C09 100%)
+          `
+        }}>
+          <div style={{
+            position:'absolute',inset:0,
+            backgroundImage:'repeating-linear-gradient(135deg, rgba(244,238,220,0.025) 0 14px, transparent 14px 28px)',
+            pointerEvents:'none'
+          }}/>
+          <div className="hand" style={{
+            position:'absolute',top:'18%',left:'8%',
+            fontSize:'clamp(140px, 22vw, 320px)',color:'var(--ember)',opacity:0.08,
+            lineHeight:1,transform:'rotate(-6deg)',pointerEvents:'none',userSelect:'none'
+          }}>Bon Appétit</div>
+        </div>
         <div className="hero-mask" style={{position:'absolute',inset:0}}/>
       </div>
 
@@ -487,15 +495,53 @@ const About = () => {
       <div className="container">
         <div className="m-stack" style={{display:'grid',gridTemplateColumns:'1fr 1.2fr',gap:80,alignItems:'start'}}>
           <div style={{position:'relative'}}>
-            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1200&q=85&auto=format&fit=crop" style={{width:'100%',borderRadius:6,filter:'grayscale(0.05) contrast(1.05)',boxShadow:'0 30px 60px -30px rgba(26,22,18,0.35)'}} alt="זיו אהרונוב בעבודה"/>
             <div style={{
-              position:'absolute',bottom:-30,left:-30,width:210,
-              background:'var(--ink)',color:'var(--paper)',padding:'18px 20px',borderRadius:6,
-              boxShadow:'0 20px 40px rgba(26,22,18,0.3)',transform:'rotate(-3deg)'
+              background:'linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%)',
+              color:'var(--paper)',
+              borderRadius:8,
+              padding:'70px 44px 56px',
+              minHeight:480,
+              display:'flex',flexDirection:'column',justifyContent:'center',
+              boxShadow:'0 30px 60px -30px rgba(26,22,18,0.5)',
+              position:'relative',overflow:'hidden'
             }}>
-              <div className="hand" style={{fontSize:28,color:'var(--ember)',lineHeight:1}}>Ziv</div>
-              <div className="serif" style={{fontSize:19,fontWeight:700,marginTop:4,color:'var(--paper)'}}>זיו אהרונוב</div>
-              <div className="tick" style={{color:'var(--paper-muted)',marginTop:4}}>CHEF · 35 YRS</div>
+              <div style={{
+                position:'absolute',top:-60,right:-60,
+                fontFamily:"'Playfair Display',Georgia,serif",fontStyle:'italic',
+                fontSize:380,color:'var(--ember-deep)',opacity:0.22,lineHeight:1,fontWeight:400,
+                pointerEvents:'none'
+              }}>Z</div>
+
+              <div style={{position:'relative',zIndex:1}}>
+                <div className="tick" style={{color:'var(--ember)',marginBottom:18,letterSpacing:'0.25em'}}>· CHEF · ISRAEL · 1991 ·</div>
+                <div className="hand" style={{fontSize:80,color:'var(--ember)',lineHeight:0.85,marginBottom:8,transform:'rotate(-2deg)',display:'inline-block'}}>Ziv</div>
+                <div className="serif" style={{fontSize:'clamp(36px,4vw,52px)',fontWeight:500,letterSpacing:'-0.025em',color:'var(--paper)',lineHeight:1,margin:'8px 0 0'}}>זיו אהרונוב</div>
+                <div style={{height:1,width:80,background:'var(--ember)',margin:'28px 0 24px'}}/>
+                <p className="serif" style={{fontStyle:'italic',fontSize:20,color:'var(--paper)',opacity:0.88,lineHeight:1.45,maxWidth:340,margin:0}}>
+                  "אירוע מוצלח מתחיל הרבה לפני המנה הראשונה."
+                </p>
+              </div>
+
+              <div style={{
+                position:'absolute',bottom:24,left:32,
+                display:'flex',alignItems:'center',gap:8,
+                color:'var(--paper-muted)',fontSize:11,letterSpacing:'0.2em',
+                fontFamily:"'JetBrains Mono',monospace",textTransform:'uppercase'
+              }}>
+                <span style={{width:24,height:1,background:'var(--paper-muted)'}}/>
+                35 YRS · ISRAEL
+              </div>
+            </div>
+
+            <div style={{
+              position:'absolute',bottom:-24,left:-24,width:120,height:120,
+              background:'var(--ember-deep)',color:'var(--paper)',borderRadius:'50%',
+              display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',
+              transform:'rotate(-12deg)',boxShadow:'0 20px 40px rgba(26,22,18,0.4)',
+              border:'2px solid var(--paper)'
+            }}>
+              <div className="hand" style={{fontSize:22,lineHeight:1}}>since</div>
+              <div className="serif" style={{fontSize:30,fontWeight:700,lineHeight:1,marginTop:4}}>1991</div>
             </div>
           </div>
 
@@ -630,17 +676,12 @@ const WhyZiv = () => {
   return (
     <section id="why" style={{padding:'140px 0 120px',background:'var(--paper)',color:'var(--ink)',position:'relative',overflow:'hidden'}}>
       <div className="container">
-        <div className="m-stack" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:60,alignItems:'center',marginBottom:80}}>
-          <div>
-            <div className="tick" style={{color:'var(--ember-deep)',marginBottom:18}}>— למה זיו</div>
-            <h2 className="serif h-serif-lg" style={{fontSize:'clamp(38px,4.5vw,60px)',lineHeight:1.05,fontWeight:400,margin:0,letterSpacing:'-0.02em',color:'var(--ink)'}}>
-              שלוש סיבות <em>שבגללן</em><br/>
-              לקוחות חוזרים שוב ושוב.
-            </h2>
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=85&auto=format&fit=crop" style={{width:'100%',borderRadius:6,objectFit:'cover',maxHeight:380,boxShadow:'0 30px 60px -30px rgba(26,22,18,0.35)'}} alt="מנת שף מוגשת"/>
-          </div>
+        <div style={{textAlign:'center',marginBottom:80,maxWidth:880,marginLeft:'auto',marginRight:'auto'}}>
+          <div className="tick" style={{color:'var(--ember-deep)',marginBottom:18}}>— למה זיו</div>
+          <h2 className="serif h-serif-lg" style={{fontSize:'clamp(38px,4.5vw,60px)',lineHeight:1.05,fontWeight:400,margin:0,letterSpacing:'-0.02em',color:'var(--ink)'}}>
+            שלוש סיבות <em>שבגללן</em><br/>
+            לקוחות חוזרים שוב ושוב.
+          </h2>
         </div>
 
         <div className="why-grid" style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:0,borderTop:'1px solid var(--rule)'}}>
@@ -655,47 +696,6 @@ const WhyZiv = () => {
               </div>
               <h4 className="serif" style={{fontSize:24,fontWeight:600,margin:'0 0 12px',color:'var(--ink)',letterSpacing:'-0.01em'}}>{s.t}</h4>
               <p style={{fontSize:15,lineHeight:1.7,color:'var(--ink-3)',opacity:0.82,margin:0}}>{s.d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// ---------- Gallery ----------
-const Gallery = () => {
-  const imgs = [
-    { src:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=80&auto=format&fit=crop', span:2, cap:'פיצה שף' },
-    { src:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1000&q=80&auto=format&fit=crop', span:1, cap:'אירוע' },
-    { src:'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=1000&q=80&auto=format&fit=crop', span:1, cap:'סלט שף' },
-    { src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80&auto=format&fit=crop', span:2, cap:'מנת שף' },
-    { src:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1000&q=80&auto=format&fit=crop', span:1, cap:'עיקרית' },
-    { src:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1000&q=80&auto=format&fit=crop', span:1, cap:'ירקות' },
-    { src:'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1000&q=80&auto=format&fit=crop', span:1, cap:'סדנה' },
-    { src:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1000&q=80&auto=format&fit=crop', span:1, cap:'קינוח' },
-  ];
-  return (
-    <section id="gallery" style={{padding:'140px 0 120px',background:'var(--ink-2)',color:'var(--paper)'}}>
-      <div className="container">
-        <div className="section-head" style={{display:'flex',justifyContent:'space-between',alignItems:'end',marginBottom:50,flexWrap:'wrap',gap:20}}>
-          <div>
-            <div className="tick" style={{color:'var(--ember)',marginBottom:14}}>— הגלריה</div>
-            <h2 className="serif h-serif-lg" style={{fontSize:'clamp(38px,4.5vw,60px)',lineHeight:1.05,fontWeight:400,margin:0,letterSpacing:'-0.02em',color:'var(--paper)'}}>
-              רגעים <em>מהאירועים</em>.
-            </h2>
-          </div>
-          <a href={buildGenericWA()} target="_blank" rel="noopener" style={{fontSize:14,color:'var(--paper-muted)',borderBottom:'1px solid var(--paper-muted)',paddingBottom:2}}>
-            רוצים לארח את זיו? ←
-          </a>
-        </div>
-        <div className="gallery-grid" style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gridAutoRows:'220px',gap:14}}>
-          {imgs.map((im,i)=>(
-            <div key={i} className="tilt" style={{
-              gridColumn:`span ${im.span}`,
-              position:'relative',overflow:'hidden',borderRadius:6
-            }}>
-              <img src={im.src} style={{width:'100%',height:'100%',objectFit:'cover'}} alt={im.cap}/>
             </div>
           ))}
         </div>
@@ -991,7 +991,6 @@ const App = () => {
       <About />
       <Services />
       <WhyZiv />
-      <Gallery />
       <Testimonials />
       <Quote />
       <FAQ />
