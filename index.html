@@ -375,25 +375,9 @@ const Hero = () => {
   return (
     <section style={{position:'relative',minHeight:'100vh',overflow:'hidden'}}>
       <div style={{position:'absolute',inset:0,zIndex:0}}>
-        <div style={{
-          width:'100%',height:'100%',position:'relative',
-          background:`
-            radial-gradient(ellipse 60% 50% at 25% 20%, rgba(180,90,40,0.45) 0%, transparent 60%),
-            radial-gradient(ellipse 55% 45% at 80% 85%, rgba(220,130,60,0.22) 0%, transparent 60%),
-            linear-gradient(180deg, #1A1612 0%, #0E0C09 100%)
-          `
-        }}>
-          <div style={{
-            position:'absolute',inset:0,
-            backgroundImage:'repeating-linear-gradient(135deg, rgba(244,238,220,0.025) 0 14px, transparent 14px 28px)',
-            pointerEvents:'none'
-          }}/>
-          <div className="hand" style={{
-            position:'absolute',top:'18%',left:'8%',
-            fontSize:'clamp(140px, 22vw, 320px)',color:'var(--ember)',opacity:0.08,
-            lineHeight:1,transform:'rotate(-6deg)',pointerEvents:'none',userSelect:'none'
-          }}>Bon Appétit</div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1800&q=85&auto=format&fit=crop" className="kenburns hero-bg"
+          style={{width:'100%',height:'100%',objectFit:'cover'}}
+          alt="שף בפעולה"/>
         <div className="hero-mask" style={{position:'absolute',inset:0}}/>
       </div>
 
